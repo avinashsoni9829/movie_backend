@@ -2,6 +2,8 @@ package com.example.demo.services;
 
 import com.example.demo.entities.Movie;
 
+import java.util.List;
+
 public interface MovieService {
     
 	// Create Movie
@@ -18,9 +20,13 @@ public interface MovieService {
 	
 	
 	// get All Movies 
-	
+
+	public List<Movie> getAllMovies();
+
+
+
 	// get all Movies under Give Genere
-	
+	public List<Movie> getAllMoviesUnderGenere(Long gId);
 	// get all Movies under given Star 
 	
 	

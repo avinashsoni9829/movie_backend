@@ -7,6 +7,8 @@ import com.example.demo.entities.Star;
 import com.example.demo.repository.StarRepository;
 import com.example.demo.services.StarService;
 
+import java.util.List;
+
 @Service
 public class StarServiceImpl implements StarService {
      
@@ -32,6 +34,11 @@ public class StarServiceImpl implements StarService {
 	@Override
 	public void deleteStar(Long id) {
 		this.starRepository.deleteById(id);
+	}
+
+	@Override
+	public List<Star> getAllStars() {
+		return  this.starRepository.findAll();
 	}
 
 }

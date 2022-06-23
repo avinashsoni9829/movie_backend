@@ -1,50 +1,34 @@
 package com.example.demo.entities;
-
-
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sun.istack.NotNull;
+import lombok.*;
 @Entity
-@RequiredArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "genre")
+
 public class Genere {
     
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "genere_id")
-	private Long gid;
-	
-	@Getter @Setter private  String gname;
-	
-	
-	
-	
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "movie_genre", joinColumns = {
-			@JoinColumn(name = "genere_id")
-	},
-	inverseJoinColumns = {
-			@JoinColumn(name = "movie_id")
-	}
-			
-  )
-	@Getter @Setter Set<Movie> movies = new HashSet<Movie>();
-		
+
+	@Getter @Setter   private Long gid;
+
+	@Getter @Setter  @NotNull private  String gname;
+
+
+	@ManyToMany(cascade = CascadeType.ALL  , mappedBy = "genere")
+	@Getter @Setter Set<Movie> movies = new HashSet<>();
+
+
+
+
+
 }
